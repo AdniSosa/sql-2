@@ -62,15 +62,15 @@ ALTER TABLE usuarios ADD COLUMN id_categoria INT;
 
 -- PASO 3
 -- Tu código aquí
-UPDATE usuarios SET id_categoria = 2 WHERE id_usuario IN (3, 11, 14, 16);
-UPDATE usuarios SET id_categoria = 3 WHERE id_usuario IN (2, 6, 12, 18);
+UPDATE usuarios SET id_categoria = 2 WHERE id_usuario IN (11, 14);
+UPDATE usuarios SET id_categoria = 3 WHERE id_usuario IN (6, 18);
 UPDATE usuarios SET id_categoria = 4 WHERE id_usuario IN (8, 10, 13);
-UPDATE usuarios SET id_categoria = 5 WHERE id_usuario IN (7, 17, 18, 20);
+UPDATE usuarios SET id_categoria = 5 WHERE id_usuario IN (7, 20);
 UPDATE usuarios SET id_categoria = 6 WHERE id_usuario IN (2, 15, 16);
-UPDATE usuarios SET id_categoria = 7 WHERE id_usuario IN (9, 10, 12, 18);
-UPDATE usuarios SET id_categoria = 8 WHERE id_usuario IN (4, 6, 11, 17);
-UPDATE usuarios SET id_categoria = 9 WHERE id_usuario IN (3, 5, 7, 13);
-UPDATE usuarios SET id_categoria = 10 WHERE id_usuario IN (1, 2, 9, 12, 19);
+UPDATE usuarios SET id_categoria = 7 WHERE id_usuario IN (9, 12);
+UPDATE usuarios SET id_categoria = 8 WHERE id_usuario IN (4, 17);
+UPDATE usuarios SET id_categoria = 9 WHERE id_usuario IN (3, 5);
+UPDATE usuarios SET id_categoria = 10 WHERE id_usuario IN (1, 19);
 
 -- PASO 4
 -- Tu código aquí
@@ -86,11 +86,10 @@ JOIN categorias ON usuarios.id_categoria = categorias.id_categoria ORDER BY usua
 CREATE TABLE usuarios_categorias(
 id_usuario_categoria INT AUTO_INCREMENT PRIMARY KEY,
 id_usuario INT,
-id_categoria INT
+id_categoria INT,
+FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario),
+FOREIGN KEY (id_categoria) REFERENCES categorias (id_categoria)
 );
-
-ALTER TABLE usuarios_categorias ADD FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
-ALTER TABLE usuarios_categorias ADD FOREIGN KEY (id_categoria) REFERENCES categorias (id_categoria);
 
 -- PASO 2
 -- Tu código aquí
